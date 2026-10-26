@@ -1,0 +1,302 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1; 
+}
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.category-buttons button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.category-buttons button:hover {
+  background-color: #555;
+}
+.category-buttons button.active {
+  background-color: #333; 
+  color: white; 
+  border: 2px solid #223; 
+}
+
+.tools-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  font-size: 1.5rem;
+}
+.tools-container p{
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.tool-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  margin: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.tool-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.tool-card:hover {
+  transform: scale(1.05);
+}
+
+/* 彈窗 */
+.tool-detail {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.tool-detail.show {
+  display: flex;
+}
+.detail-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  text-align: center;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+}
+.tool-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+.visit-btn {
+  background-color: #333;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px;
+}
+.visit-btn:hover {
+  background-color: #444;
+}
+
+/* 推薦表單 */
+#recommend-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 300px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#recommend-section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: 
+  #000;
+}
+#recommend-section label {
+  color: #000;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+input,
+textarea,
+select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+input::placeholder {
+  color: #888;
+}
+button:hover {
+  background-color: #999;
+}
+button[type="submit"] {
+  background-color: #333;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+button[type="submit"]:hover {
+  background-color: #444;
+}
+
+:root {
+  --background-color: #f2f2f2;
+  --text-color: #000000;
+  --card-background: #f8f9fa; 
+  --button-background: #3a3c3f;
+  --button-text: #000000;
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #f5f5f5;
+  --card-background: #1e1e1e;
+  --button-background: #3a3a3a;
+  --button-text: #ffffff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+.tool-card{
+  background-color: var(--card-background);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button {
+  background-color: var(--button-background);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--button-text);
+}
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+.detail-content {
+  background: var(--background-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  text-align: center;
+  position: relative;
+}
+.other-buttons button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background-color: #272727;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.other-buttons button:hover {
+  background-color: #2d2d2d;
+}
+
+.footer-container {
+  background-color: #333; /* 深色背景 */
+  color: #fff; /* 白色文字 */
+  padding: 40px 20px; /* 上下左右內邊距 */
+  text-align: center; /* 預設文字居中 */
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  max-width: 150px; /* 設置 logo 的寬度 */
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-around; /* 等距排列 */
+  flex-wrap: wrap; /* 支援換行 */
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* 最小寬度，確保內容不壓縮 */
+  padding: 10px;
+}
+
+.footer-section h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase; /* 全大寫 */
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none; /* 去掉列表點 */
+  padding: 0;
+}
+
+.footer-section li {
+  margin: 5px 0;
+}
+
+.footer-section a {
+  color: #fff; /* 白色文字 */
+  text-decoration: none; /* 去掉底線 */
+}
+
+.footer-section a:hover {
+  text-decoration: underline; /* 懸停顯示底線 */
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #555; /* 細線條分隔 */
+  padding-top: 10px;
+}
+
+footer {
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+html, body {
+  height: 100%; /* 確保頁面高度佔滿瀏覽器 */
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
