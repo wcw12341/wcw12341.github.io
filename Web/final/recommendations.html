@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>他人推薦工具</title>
+<link rel="stylesheet" href="styles.css">
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById("theme-toggle");
+    // 初始化主題
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    // 切換按鈕事件監聽
+    toggleButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        // 更新 LocalStorage 中的主題狀態
+        if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        } else {
+        localStorage.setItem("theme", "light");
+        }
+    });
+});
+</script>
+<style>
+    .back-btn {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 10px 20px;
+        background-color: #444;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back-btn:hover {
+        background-color: #555;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>他人推薦的 AI 工具</h1>
+        <div class="other-buttons">
+            <a href="index.html" class="back-btn">返回主頁</a>
+            <button id="theme-toggle">☀️/🌙</button>
+        </div>
+      </header>
+  <main class="tools-container">
+    <p>暫無他人推薦其他工具</p>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images.png" alt="Logo">
+      </div>
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h4>CONTACT US</h4>
+          <ul>
+            <li>桃園市中壢區遠東路135號</li>
+            <li>電話: 0906277122</li>
+            <li>信箱: <a href="mailto:ann802921@gmail.com">ann802921@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="recommendations.js"></script>
+</body>
+</html>

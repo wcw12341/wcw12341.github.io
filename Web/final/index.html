@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools Showcase</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #search-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  #search-input:focus {
+    border-color: #0078d4;
+  }
+  </style>
+  
+</head>
+<body>
+  <header>
+    <h1>推薦的AI工具</h1>
+    <div class="category-buttons">
+      <button onclick="filterCategory('all')">全部</button>
+      <button onclick="filterCategory('general-assistance')">通用助手</button>
+      <button onclick="filterCategory('get-work-done')">效率工具</button>
+      <button onclick="filterCategory('build-an-audience')">內容創作工具</button>
+      <button onclick="filterCategory('build-a-product')">產品開發工具</button>
+      <button onclick="filterCategory('get-creative')">創意工具</button>
+      <button onclick="filterCategory('learn-or-grow')">學習與成長工具</button>
+      <button onclick="filterCategory('have-fun')">娛樂工具</button>
+    </div>
+    <div class="other-buttons">
+      <button id="view-recommendations" onclick="window.location.href='recommendations.html';">查看他人推薦</button>
+      <button id="recommend-btn" class="recommend-btn">我要推薦AI工具</button>
+      <button id="theme-toggle">☀️/🌙</button>
+    </div>
+    <div id="categoryLabel" class="category-label">當前分類: 所有工具</div>
+    <input type="text" id="search-input" placeholder="輸入關鍵字搜尋工具..." oninput="filterTools()">
+  </header>
+
+  <div id="recommend-section" style="display:none;">
+    <h2>推薦AI工具</h2>
+    <form id="recommend-form">
+      <label for="tool-name">工具名稱：</label>
+      <input type="text" id="tool-name" name="tool-name" required>
+  
+      <label for="tool-description">工具描述：</label>
+      <textarea id="tool-description" name="tool-description" required></textarea>
+  
+      <label for="tool-category">AI工具分類：</label>
+      <select id="tool-category" name="tool-category" required>
+        <option value="通用助手">通用助手</option>
+        <option value="效率工具">效率工具</option>
+        <option value="內容創作工具">內容創作工具</option>
+        <option value="產品開發工具">產品開發工具</option>
+        <option value="創意工具">創意工具</option>
+        <option value="學習與成長工具">學習與成長工具</option>
+        <option value="娛樂工具">娛樂工具</option>
+      </select>
+
+      <label for="tool-url">工具網址：</label>
+      <input type="url" id="tool-url" name="tool-url" required placeholder="https://example.com">
+      <button type="submit">提交推薦</button>   
+  </form>
+  <div id="response-message"></div>
+</div>
+
+  <main class="tools-container">
+    <!-- 通用助手 -->
+    <div class="tool-card" data-category="general-assistance" data-description="目前市佔率最高的聊天機器人，建議可體驗「進階語音模式」。" data-link="https://chatgpt.com/">
+      <img src="img/ChatGPT.png" alt="ChatGPT">
+      <p>ChatGPT</p>
+    </div>
+    <div class="tool-card" data-category="general-assistance" data-description="AI驅動的搜尋引擎，提供更精確、有上下文的搜尋結果，並附帶來源連結。" data-link="https://www.perplexity.ai/">
+      <img src="img/Perplexity.png" alt="Perplexity">
+      <p>Perplexity</p>
+    </div>
+    <div class="tool-card" data-category="general-assistance" data-description="通用聊天機器人，擅長處理複雜任務、專案協作和內容產出。" data-link="https://claude.ai/">
+      <img src="img/Claude.png" alt="Claude">
+      <p>Claude (Anthropic)</p>
+    </div>
+    <!-- 效率工具 -->
+    <div class="tool-card" data-category="get-work-done" data-description="專為團隊協作研究設計的工作空間，提供便捷的資訊共享和整理功能。" data-link="https://cubby.nyc/">
+      <img src="img/cubby.png" alt="Cubby">
+      <p>Cubby</p>
+    </div>
+    <div class="tool-card" data-category="get-work-done" data-description="AI簡報、文件和網站生成工具，幫助您快速將想法轉化為視覺化的呈現內容。" data-link="https://gamma.app/zh-tw">
+      <img src="img/Gamma.png" alt="Gamma">
+      <p>Gamma</p>
+    </div>
+    <div class="tool-card" data-category="get-work-done" data-description="讓您構建客製化AI助手，自動化各種工作流程，提高工作效率。" data-link="https://www.lindy.ai/">
+      <img src="img/lindy.png" alt="Lindy.ai">
+      <p>Lindy.ai</p>
+    </div>
+    <div class="tool-card" data-category="get-work-done" data-description="全應用程式適用的即時語音轉文字工具，讓您在任何程式中都能使用語音輸入。" data-link="https://www.flowvoice.ai/">
+      <img src="img/wisprflow.jpg" alt="Wispr Flow">
+      <p>Wispr Flow</p>
+    </div>
+    <div class="tool-card" data-category="get-work-done" data-description="AI會議筆記工具，自動記錄、轉錄會議內容並整理成重點筆記，節省會後整理時間。" data-link="https://www.granola.ai/">
+      <img src="img/Granola.jpg" alt="Granola">
+      <p>Granola</p>
+    </div>
+    <div class="tool-card" data-category="get-work-done" data-description="AI電子郵件助手，幫助您整理收件匣並自動回覆郵件，減輕郵件處理負擔。" data-link="https://cora.computer/?ref=2CQ9pJ1c">
+      <img src="img/Cora.jpg" alt="Cora">
+      <p>Cora</p>
+    </div>
+    <!-- 內容創作工具... -->  
+    <div class="tool-card" data-category="build-an-audience" data-description="專為社群媒體影片設計的AI虛擬人物工具，讓影片更生動有趣。" data-link="https://www.argil.ai/">
+      <img src="img/Argil.jpg" alt="Argil">
+      <p>Argil</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="AI虛擬人物平台，提供文字、語音和影片等多種互動方式，用於與觀眾建立連結。" data-link="https://www.delphi.ai/">
+      <img src="img/Delphi.png" alt="Delphi">
+      <p>Delphi</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="利用AI虛擬人物擴展內容製作，例如生成不同語言的影片翻譯版本。" data-link="https://www.heygen.com/">
+      <img src="img/HeyGen.jpg" alt="HeyGen">
+      <p>HeyGen</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="透過AI將文字生成影片，涵蓋從場景、素材、角色、對白到視覺特效的所有環節。" data-link="https://opus.ai/">
+      <img src="img/Opus.AI.jpg" alt="Opus.AI">
+      <p>Opus.AI</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="將冗長的影片內容自動剪輯成短而精華的片段，更適合社群媒體傳播。" data-link="https://www.overlap.ai/">
+      <img src="img/overlap.png" alt="Overlap">
+      <p>Overlap</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="專為內容創作者設計的AI助手，提供內容生成、排程等協助。" data-link="https://www.personify.space/">
+      <img src="img/persona.png" alt="Persona">
+      <p>Persona</p>
+    </div>
+    <div class="tool-card" data-category="build-an-audience" data-description="專為內容創作者設計的AI助手，提供內容生成、排程等協助。" data-link="https://www.captions.ai/">
+      <img src="img/Captions.jpg" alt="Captions">
+      <p>Captions</p>
+    </div>
+    <!-- 產品開發工具... --> 
+    <div class="tool-card" data-category="build-a-product" data-description="整合多種AI模型於單一平台，方便開發者比較和使用不同模型的特性。" data-link="https://huggingface.co/spaces/akhaliq/anychat">
+      <img src="img/Anychat.webp" alt="Anychat">
+      <p>Anychat</p>
+    </div>
+    <div class="tool-card" data-category="build-a-product" data-description="強大的AI程式碼自動補全工具，提升程式碼撰寫效率。" data-link="https://codeium.com/windsurf/">
+      <img src="img/Codeium.png" alt="Codeium">
+      <p>Codeium</p>
+    </div>
+    <div class="tool-card" data-category="build-a-product" data-description="具備AI程式碼理解能力的程式碼編輯器，提供更智能的程式碼提示和補全功能。" data-link="https://www.cursor.com/">
+      <img src="img/Cursor.jpg" alt="Cursor">
+      <p>Cursor</p>
+    </div>
+    <div class="tool-card" data-category="build-a-product" data-description="透過自然語言即可構建應用程式和網站的AI助手，降低程式開發門檻。" data-link="https://replit.com/">
+      <img src="img/Replit.png" alt="Replit">
+      <p>Replit</p>
+    </div>
+    <!-- 創意工具... -->   
+    <div class="tool-card" data-category="get-creative" data-description="提供高品質、逼真的AI語音生成服務，適用於配音、旁白等多種用途。" data-link="https://elevenlabs.io/">
+      <img src="img/Eleven Labs.png" alt="Eleven Labs">
+      <p>Eleven Labs</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="AI影片生成工具，讓使用者透過文字或圖像輕鬆創造影片內容。" data-link="https://runwayml.com/">
+      <img src="img/Runway ML.png" alt="Runway ML">
+      <p>Runway ML</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="根據文字描述生成音樂或歌曲，讓音樂創作變得更簡單。" data-link="https://suno.com/">
+      <img src="img/Suno.png" alt="Suno">
+      <p>Suno</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="透過AI提升 Podcast 音頻品質。" data-link="https://www.udio.com/">
+      <img src="img/UDIO.png" alt="UDIO">
+      <p>UDIO</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="進階 AI 圖像生成工具。" data-link="https://www.midjourney.com/home">
+      <img src="img/MIDJOURNEY.png" alt="MIDJOURNEY">
+      <p>MIDJOURNEY</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="支援精確編輯的 AI 圖像生成平台。" data-link="https://ideogram.ai/login">
+      <img src="img/IDEOGRAM.jpg" alt="IDEOGRAM">
+      <p>IDEOGRAM</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="AI設計與圖形創建平台" data-link="https://playground.com/">
+      <img src="img/Playground.jpg" alt="Playground">
+      <p>Playground</p>
+    </div>
+    <div class="tool-card" data-category="get-creative" data-description="動畫化照片，創建動態角色。" data-link="https://www.viggle.ai/home">
+      <img src="img/viggle.webp" alt="Viggle">
+      <p>Viggle</p>
+    </div>
+    <!-- 學習與成長工具... -->  
+    <div class="tool-card" data-category="learn-or-grow" data-description="AI驅動的醫療症狀評估工具，提供初步的健康評估和建議。" data-link="https://ada.com/">
+      <img src="img/Ada Health.jpg" alt="Ada Health">
+      <p>Ada Health</p>
+    </div>
+    <div class="tool-card" data-category="learn-or-grow" data-description="將任何文件轉換成AI Podcast，方便使用者以聽的方式學習和吸收資訊。" data-link="https://notebooklm.google/">
+      <img src="img/NotebookLM.png" alt="NotebookLM">
+      <p>NotebookLM</p>
+    </div>
+    <div class="tool-card" data-category="learn-or-grow" data-description="AI新聞應用程式，將多篇文章整合並簡化成易於理解的故事。" data-link="https://particle.news/">
+      <img src="img/Particle.png" alt="Particle">
+      <p>Particle</p>
+    </div>
+    <div class="tool-card" data-category="learn-or-grow" data-description="互動式AI日記，透過AI分析您的日記內容，提供個人化的洞察。" data-link="https://my.rosebud.app/">
+      <img src="img/Rosebud.jpg" alt="Rosebud">
+      <p>Rosebud</p>
+    </div>
+    <div class="tool-card" data-category="learn-or-grow" data-description="將文件轉為音頻內容的工具。" data-link="https://elevenlabs.io/text-reader">
+      <img src="img/ELEVENREADER.webp" alt="ELEVENREADER">
+      <p>ELEVENREADER</p>
+    </div>
+    <!-- 娛樂工具... -->  
+    <div class="tool-card" data-category="have-fun" data-description="專為孩童設計的AI語音玩具，提供互動式學習和娛樂體驗。" data-link="https://heycurio.com/">
+      <img src="img/curio.png" alt="Curio">
+      <p>Curio</p>
+    </div>
+    <div class="tool-card" data-category="have-fun" data-description="在Meta應用程式中製作自己、家人和朋友的AI圖像，提供有趣的互動體驗。" data-link="https://www.meta.ai/">
+      <img src="img/Meta Imagine.jpg" alt="Meta Imagine">
+      <p>Meta Imagine</p>
+    </div>
+    <div class="tool-card" data-category="have-fun" data-description="用於創作和分享AI圖像和影片的社群應用程式，讓使用者享受AI創作的樂趣。" data-link="https://remix.ai/">
+      <img src="img/Remix AI.jpg" alt="Remix">
+      <p>Remix</p>
+    </div>
+  </main>
+
+  <div class="tool-detail" id="toolDetail">
+    <div class="detail-content">
+      <button class="close-btn" onclick="closeDetail()">✖</button>
+      <img id="detailImage" src="" alt="Tool Image" class="tool-image">
+      <h2 id="detailName"></h2>
+      <p id="detailDescription"></p>
+      <a id="detailLink" href="#" target="_blank" class="visit-btn">訪問網站</a>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images.png" alt="Logo">
+      </div>
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h4>CONTACT US</h4>
+          <ul>
+            <li>桃園市中壢區遠東路135號</li>
+            <li>電話: 0906277122</li>
+            <li>信箱: <a href="mailto:ann802921@gmail.com">ann802921@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>
